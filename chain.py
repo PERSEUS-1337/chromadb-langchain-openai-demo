@@ -44,6 +44,14 @@ def process_llm_response(llm_response):
 
 
 # Full Example
-query = "What are the main goals of UP as an academic institution?"
-llm_response = qa_chain(query)
-process_llm_response(llm_response)
+# query = "What are the main goals of UP as an academic institution?"
+# llm_response = qa_chain(query)
+# process_llm_response(llm_response)
+
+while True:
+    query = input("Enter your question or type 'exit' to quit: ")
+    if query.lower() == "exit":
+        break
+
+    llm_response = qa_chain(query)
+    process_llm_response(llm_response)
