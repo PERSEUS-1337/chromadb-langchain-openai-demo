@@ -3,10 +3,8 @@ from dotenv import load_dotenv
 
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.llms import OpenAI
 from langchain.chains import RetrievalQA
-from langchain.document_loaders import TextLoader, DirectoryLoader
 
 load_dotenv()
 
@@ -49,9 +47,15 @@ def process_llm_response(llm_response):
 # process_llm_response(llm_response)
 
 while True:
-    query = input("Enter your question or type 'exit' to quit: ")
+    query = input(
+        "Enter your question, type 'delete' to delete ChromaDB, or 'exit' to quit: "
+    )
     if query.lower() == "exit":
         break
-
-    llm_response = qa_chain(query)
-    process_llm_response(llm_response)
+    elif query.lower() == "delete":
+        vectordb.delete_collection()
+        vectordb.persist()
+        print("ChromaDB has been deleted.")
+    else:
+        llm_response = qa_chain(query)
+        process_llm_response(llm_response)
