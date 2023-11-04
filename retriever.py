@@ -23,6 +23,8 @@ docs = retriever.get_relevant_documents(
     "How would AI be useful as Virtual Health Assistants?"
 )
 
+retriever = vectordb.as_retriever(search_kwards={"k": 2})
+
 print(len(docs))
 for i, text in enumerate(docs):
     print(f"{i}: {text}")
