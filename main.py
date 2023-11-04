@@ -24,7 +24,7 @@ text_chunks = text_splitter.split_documents(documents)
 
 print(len(text_chunks))
 for i, chunk in enumerate(text_chunks):
-    print(f"{i}: {chunk}")
+    print(f"{i}: {chunk}\n")
 
 # We then create the DB
 # Supply the directory, which is /db, where we will embed and store the texts
